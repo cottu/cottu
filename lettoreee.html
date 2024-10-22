@@ -28,12 +28,12 @@
                 var data = JSON.parse(xhr.responseText);
                 for(i=0;i<data.length;i++){
                     var row = tableBody.insertRow();
-                    row.insertCell(0).textContent = person.Nome;
-                    row.insertCell(1).textContent = person.Cognome;
-                    row.insertCell(2).textContent = person.Eta;
-                    row.insertCell(3).textContent = person.Indirizzo;
-                    row.insertCell(4).textContent = person.Citta;
-                    row.insertCell(5).textContent = person.Telefono;
+                    row.insertCell(0).textContent = data.Nome;
+                    row.insertCell(1).textContent = data.Cognome;
+                    row.insertCell(2).textContent = data.Eta;
+                    row.insertCell(3).textContent = data.Indirizzo;
+                    row.insertCell(4).textContent = data.Citta;
+                    row.insertCell(5).textContent = data.Telefono;
                 }
             }
         };

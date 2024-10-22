@@ -27,7 +27,7 @@
         xhr.open("GET", "tabellaaaa.json", true);
         xhr.onload = function() {
             if (b.status === 200) {
-                var data = JSON.parse(xhr.responseText);
+                var data = JSON.parse(b.responseText);
                 for(i=0;i<data.length;i++){
                     var row = tableBody.insertRow();
                     row.insertCell(0).textContent = data[i].Nome;

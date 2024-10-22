@@ -24,7 +24,7 @@
     <script>
         var xhr = new XMLHttpRequest();
         var tableBody = document.getElementById("anagraficaTable");
-        xhr.open("GET", "tabellaaaa.json", true); // Sostituisci con il percorso corretto del tuo file JSON
+        xhr.open("GET", "tabellaaaa.json", true);
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);

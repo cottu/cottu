@@ -24,8 +24,8 @@
     <script>
         var b = new XMLHttpRequest();
         var tableBody = document.getElementById("anagraficaTable");
-        xhr.open("GET", "tabellaaaa.json", true);
-        xhr.onload = function() {
+        b.open("GET", "tabellaaaa.json", true);
+        b.onload = function() {
             if (b.status === 200) {
                 var data = JSON.parse(b.responseText);
                 for(i=0;i<data.length;i++){

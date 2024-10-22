@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica</title>
+</head>
+<body>
+    <h1>Anagrafica</h1>
+    <table border="1" id="anagraficaTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "path/to/your/file.json", true); // Sostituisci con il percorso corretto del tuo file JSON
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                var tableBody = document.getElementById("anagraficaTable").getElementsByTagName("tbody")[0];
+
+                data.forEach(function(person) {
+                    var row = tableBody.insertRow();
+                    row.insertCell(0).textContent = person.Nome;
+                    row.insertCell(1).textContent = person.Cognome;
+                    row.insertCell(2).textContent = person.Eta;
+                    row.insertCell(3).textContent = person.Indirizzo;
+                    row.insertCell(4).textContent = person.Citta;
+                    row.insertCell(5).textContent = person.Telefono;
+                });
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

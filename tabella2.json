@@ -1,1 +1,19 @@
 
+[
+    {
+        "Nome": "Mario",
+        "Cognome": "Rossi",
+        "Eta": 30,
+        "Indirizzo": "Via Roma 1",
+        "Citta": "Milano",
+        "Telefono": {"ufficio":5457858845858,"casa":73473744724,"privato":87578575}
+    },
+    {
+        "Nome": "Giulia",
+        "Cognome": "Bianchi",
+        "Eta": 25,
+        "Indirizzo": "Via Milano 2",
+        "Citta": "Roma",
+        "Telefono": {"ufficio":56664858,"casa":5465244724,"privato":4542178575}
+    }
+]

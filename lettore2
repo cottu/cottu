@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica</title>
+</head>
+<body>
+    <h1>Anagrafica</h1>
+    <table border="1" id="anagraficaTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Telefono</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        var b = new XMLHttpRequest();
+        var tabella = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
+        b.open("GET", "tabellaaaa.json", true);
+        b.onload = function() {
+            if (b.status === 200) {
+                var data = JSON.parse(b.responseText);
+                for(i=0; i<data.length; i++){
+                    var row = tabella.insertRow();
+                    row.insertCell(0).textContent = data[i].Nome;
+                    row.insertCell(1).textContent = data[i].Cognome;
+                    row.insertCell(2).textContent = data[i].Eta;
+                    row.insertCell(3).textContent = data[i].Indirizzo;
+                    row.insertCell(4).textContent = data[i].Citta;
+                    row.insertCell(5).textContent = data[i].Telefono;
+                }
+            }
+        };
+        b.send();
+    </script>
+</body>
+</html>

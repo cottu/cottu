@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -18,25 +19,25 @@
                 <th>Telefono</th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
     </table>
 
     <script>
         var b = new XMLHttpRequest();
-        var tabella = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
-        b.open("GET", "tabellaaaa.json", true);
+        var tabella = document.getElementById("anagraficaTable");
+        b.open("GET", "tabella2.json", true);
         b.onload = function() {
             if (b.status === 200) {
                 var data = JSON.parse(b.responseText);
-                for(i=0; i<data.length; i++){
+                for(i=0;i<data.length;i++){
                     var row = tabella.insertRow();
                     row.insertCell(0).textContent = data[i].Nome;
                     row.insertCell(1).textContent = data[i].Cognome;
                     row.insertCell(2).textContent = data[i].Eta;
                     row.insertCell(3).textContent = data[i].Indirizzo;
                     row.insertCell(4).textContent = data[i].Citta;
-                    row.insertCell(5).textContent = data[i].Telefono;
+                    row.insertCell(5).textContent = data[i].Telefono.casa;
+                    row.insertCell(5).textContent = data[i].Telefono.ufficio;
+                    row.insertCell(5).textContent = data[i].Telefono.privato;
                 }
             }
         };

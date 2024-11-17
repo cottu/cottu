@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Ricevi JSON</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dati Contatti</h1>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Telefono</th>
+        </tr>
+        <tbody id="data"></tbody>
+    </table>
+
+    <script>
+        const jsonString = localStorage.getItem('contatti');
+        const contatti = JSON.parse(jsonString);
+        const tableBody = document.getElementById('data');
+
+        contatti.forEach(contatto => {
+            const row = `<tr>
+                            <td>${contatto.nome}</td>
+                            <td>${contatto.telefono}</td>
+                        </tr>`;
+            tableBody.innerHTML += row;
+        });
+    </script>
+</body>
+</html>

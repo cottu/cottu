@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>invio e ricevi</title>
+</head>
+<body>
+    <h1>Dati JSON</h1>
+    <script>
+        const contatti = [
+            { nome: "Mario", telefono: "1234232330" },
+            { nome: "Luigi", telefono: "3738382221" },
+            { nome: "Piero", telefono: "1456337655" }
+        ];
+
+        const jsonString = JSON.stringify(contatti);
+        localStorage.setItem('contatti', jsonString);
+        window.location.href = 'ricevi2_json.html';
+    </script>
+</body>
+</html>
+

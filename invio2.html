@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sender 2</title>
+</head>
+<body>
+    <h1>Dati Contatti</h1>
+    <script>
+        const contacts = [
+            { nome: "Mario", telefono: "1234567890" },
+            { nome: "Luigi", telefono: "0987654321" },
+            { nome: "Peach", telefono: "1122334455" }
+        ];
+
+        const contactsJSON = JSON.stringify(contacts);
+        localStorage.setItem('contactsData', contactsJSON);
+        window.location.href = 'receiver2.html';
+    </script>
+</body>
+</html>

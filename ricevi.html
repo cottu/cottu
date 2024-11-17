@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dati Utente</h1>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Età</th>
+        </tr>
+        <tr id="userDataRow"></tr>
+    </table>
+
+    <script>
+        const userJSON = localStorage.getItem('userData');
+        const user = JSON.parse(userJSON);
+        document.getElementById('userDataRow').innerHTML = `<td>${user.nome}</td><td>${user.cognome}</td><td>${user.eta}</td>`;
+    </script>
+</body>
+</html>

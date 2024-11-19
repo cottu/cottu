@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F8FF;
+            margin: 0;
+            padding: 20px;
+        }
 
+        h1, h2 {
+            color: #0288D1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .contact-info li {
+            margin-bottom: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            color: #0288D1;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #0288D1;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0277BD;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Curriculum Vitae di <span id="nome"></span> <span id="cognome"></span></h1>
+
+        <div class="profile-header">
+            <img id="foto" src="" alt="Foto Profilo">
+            <div>
+                <h2 id="nomeCompleto"></h2>
+                <p id="eta"></p>
+                <p id="indirizzo"></p>
+                <p id="citta"></p>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <h3>Contatti</h3>
+            <ul>
+                <li><strong>Telefono Casa:</strong> <span id="telefonoCasa"></span></li>
+                <li><strong>Telefono Ufficio:</strong> <span id="telefonoUfficio"></span></li>
+                <li><strong>Telefono Privato:</strong> <span id="telefonoPrivato"></span></li>
+            </ul>
+        </div>
+
+
+        <a href="index.html" class="button">Torna alla Lista</a>
+    </div>
+
+    <script>
+        
+        window.onload = function() {
+            var userIndex = localStorage.getItem("userIndex");
+            var data = [
+                {
+                    "Foto": "https://media.gettyimages.com/id/1158014305/it/foto/colpo-alla-testa-di-un-adolescente.jpg?s=612x612&w=gi&k=20&c=GDb7vsSFQqSCw7s-ugnDvccGWscoDtphAhnVQS7WD9U=",
+                    "Nome": "Mario",
+                    "Cognome": "Rossi",
+                    "Eta": 30,
+                    "Indirizzo": "Via Roma 1",
+                    "Citta": "Milano",
+                    "Telefono": {
+                        "casa": "0123456789",
+                        "ufficio": "0234567890",
+                        "privato": "3456789012"
+                    },
+                    "CV": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeTUoHh7YU-6n-LRO0RYV5965r7Q0KNrZVVA&s"
+                },
+                {
+                    "Foto": "https://media.gettyimages.com/id/1437816897/it/foto/ritratto-di-donna-daffari-manager-o-risorse-umane-per-il-successo-professionale-azienda-che.jpg?s=612x612&w=gi&k=20&c=KZU2wYH-vyXr7g0Zjjmffva52O-VtzrQe4cOW33SH-k=",
+                    "Nome": "Cinzia",
+                    "Cognome": "Bellini",
+                    "Eta": 28,
+                    "Indirizzo": "Via Milano 2",
+                    "Citta": "Roma",
+                    "Telefono": {
+                        "casa": "0123456789",
+                        "ufficio": "0234567890",
+                        "privato": "3456789012"
+                    },
+                    "CV": "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2023/06/esempio-Curriculum-grafico-pubblicitario-con-un-design-contemporaneo.svg"
+                }
+            ];
+
+            
+            if (userIndex !== null && userIndex >= 0 && userIndex < data.length) {
+                var user = data[userIndex]; 
+
+                // Popoliamo il CV con i dati
+                document.getElementById("nome").textContent = user.Nome;
+                document.getElementById("cognome").textContent = user.Cognome;
+                document.getElementById("nomeCompleto").textContent = user.Nome + " " + user.Cognome;
+                document.getElementById("foto").src = user.Foto;
+                document.getElementById("eta").textContent = "Età: " + user.Eta;
+                document.getElementById("indirizzo").textContent = "Indirizzo: " + user.Indirizzo;
+                document.getElementById("citta").textContent = "Città: " + user.Citta;
+                document.getElementById("telefonoCasa").textContent = user.Telefono.casa;
+                document.getElementById("telefonoUfficio").textContent = user.Telefono.ufficio;
+                document.getElementById("telefonoPrivato").textContent = user.Telefono.privato;
+
+            } else {
+    
+                alert("Dati utente non trovati.");
+            }
+        };
+    </script>
+
+</body>
+</html>

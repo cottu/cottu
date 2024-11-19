@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F8FF; /* Colore di sfondo chiaro */
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0288D1;
+            color: white;
+        }
+
+        td img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        td a {
+            color: #0288D1;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Anagrafica</h1>
+    <table id="anagraficaTable">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Numeri di Telefono</th>
+                <th>CV</th> <!-- Colonna per il CV -->
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
+
+        xhr.open("GET", "tabella2.json", true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                for (var i = 0; i < data.length; i++) {
+                    var row = table.insertRow();
+                    
+                    // Colonna per la Foto
+                    var cell1 = row.insertCell(0);
+                    var img = document.createElement("img");
+                    img.src = data[i].Foto;  // Percorso dell'immagine
+                    cell1.appendChild(img);
+                    
+                    // Colonne per i dati
+                    row.insertCell(1).textContent = data[i].Nome;
+                    row.insertCell(2).textContent = data[i].Cognome;
+                    row.insertCell(3).textContent = data[i].Eta;
+                    row.insertCell(4).textContent = data[i].Indirizzo;
+                    row.insertCell(5).textContent = data[i].Citta;
+
+                    // Colonna per i numeri di telefono
+                    var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
+                    row.insertCell(6).textContent = phoneNumbers;
+                    
+                    // Colonna per il link al CV
+                    var cvLink = document.createElement("a");
+                    cvLink.href = "cv.html?cv=" + encodeURIComponent(data[i].CV); // Passa il percorso del CV
+                    cvLink.textContent = "Visualizza CV";
+                    row.insertCell(7).appendChild(cvLink);
+                }
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

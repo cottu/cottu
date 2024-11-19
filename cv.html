@@ -32,7 +32,7 @@
                 console.error("Errore di rete durante il caricamento del CV.");
                 alert("Errore di rete durante il caricamento del CV.");
             };
-            xhr.send();  // Send the request
+            xhr.send();  
         }
 
         function mostraCV(cvData) {
@@ -88,10 +88,10 @@
             `;
         }
 
-        const cvFile = localStorage.getItem('json');  // Retrieve the filename from localStorage
+        const cvFile = localStorage.getItem('json');  
 
         if (cvFile) {
-            caricaCV(cvFile);  // Load the CV file
+            caricaCV(cvFile);  
         } else {
             alert('CV non trovato');
         }

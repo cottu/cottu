@@ -1,0 +1,45 @@
+{
+  "nome": "Marco Bianchi",
+  "eta": 30,
+  "email": "marco.bianchi@example.com",
+  "esperienza": [
+    {
+      "ruolo": "Sviluppatore Backend",
+      "azienda": "TechInnovations",
+      "anno_inizio": 2018,
+      "anno_fine": 2023,
+      "descrizione": "Sviluppo soluzioni backend scalabili con Java e Spring Boot, gestendo API e integrazioni con sistemi esterni."
+    },
+    {
+      "ruolo": "Junior Developer",
+      "azienda": "StartUp Lab",
+      "anno_inizio": 2016,
+      "anno_fine": 2018,
+      "descrizione": "Sviluppo di piccole applicazioni aziendali e gestione di database relazionali."
+    }
+  ],
+  "istruzione": [
+    {
+      "titolo": "Laurea in Informatica",
+      "universita": "Università degli Studi di Milano",
+      "anno": 2016
+    }
+  ],
+  "competenze": [
+    "Programmazione in Java",
+    "Sviluppo Backend (Spring Boot)",
+    "Gestione Database (MySQL, PostgreSQL)",
+    "API RESTful",
+    "Sistemi di versionamento (Git)"
+  ],
+  "lingue": [
+    {
+      "lingua": "Italiano",
+      "livello": "Madrelingua"
+    },
+    {
+      "lingua": "Inglese",
+      "livello": "B2"
+    }
+  ]
+}

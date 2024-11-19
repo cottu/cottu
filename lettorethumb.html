@@ -68,31 +68,30 @@
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
-        xhr.open("GET", "tabella2.json", true);
+        xhr.open("GET", "tabella3.json", true);
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
                 for (var i = 0; i < data.length; i++) {
                     var row = table.insertRow();
                     
-                    // Colonna per la Foto
                     var cell1 = row.insertCell(0);
                     var img = document.createElement("img");
                     img.src = data[i].Foto;  // Percorso dell'immagine
                     cell1.appendChild(img);
                     
-                    // Colonne per i dati
+                    
                     row.insertCell(1).textContent = data[i].Nome;
                     row.insertCell(2).textContent = data[i].Cognome;
                     row.insertCell(3).textContent = data[i].Eta;
                     row.insertCell(4).textContent = data[i].Indirizzo;
                     row.insertCell(5).textContent = data[i].Citta;
 
-                    // Colonna per i numeri di telefono
+                    
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
                     
-                    // Colonna per il link al CV
+                    
                     var cvLink = document.createElement("a");
                     cvLink.href = "cv.html?cv=" + encodeURIComponent(data[i].CV); // Passa il percorso del CV
                     cvLink.textContent = "Visualizza CV";

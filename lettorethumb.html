@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #F0F8FF; /* Colore di sfondo chiaro */
+            background-color: #F0F8FF; 
             padding: 20px;
         }
 
@@ -77,7 +77,7 @@
                     
                     var cell1 = row.insertCell(0);
                     var img = document.createElement("img");
-                    img.src = data[i].Foto;  // Percorso dell'immagine
+                    img.src = data[i].Foto;  
                     cell1.appendChild(img);
                     
                     
@@ -93,7 +93,7 @@
                     
                     
                     var cvLink = document.createElement("a");
-                    cvLink.href = "cv.html?cv=" + encodeURIComponent(data[i].CV); // Passa il percorso del CV
+                    cvLink.href = "cv.html?cv=" + encodeURIComponent(data[i].CV); 
                     cvLink.textContent = "Visualizza CV";
                     row.insertCell(7).appendChild(cvLink);
                 }

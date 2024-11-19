@@ -1,0 +1,36 @@
+{
+  "nome": "Giulia Bianchi",
+  "eta": 25,
+  "email": "giulia.bianchi@example.com",
+  "esperienza": [
+    {
+      "ruolo": "Sviluppatrice Software",
+      "azienda": "WebSolutions",
+      "anno_inizio": 2019,
+      "anno_fine": 2023,
+      "descrizione": "Lavoro come sviluppatrice full-stack, principalmente con JavaScript e Python."
+    }
+  ],
+  "istruzione": [
+    {
+      "titolo": "Laurea in Ingegneria Informatica",
+      "universita": "Politecnico di Torino",
+      "anno": 2018
+    }
+  ],
+  "competenze": [
+    "Programmazione in Python",
+    "Sviluppo Full-Stack",
+    "Gestione Database (MySQL, MongoDB)"
+  ],
+  "lingue": [
+    {
+      "lingua": "Italiano",
+      "livello": "Madrelingua"
+    },
+    {
+      "lingua": "Inglese",
+      "livello": "B2"
+    }
+  ]
+}

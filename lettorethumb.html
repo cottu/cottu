@@ -42,7 +42,6 @@
         td a:hover {
             text-decoration: underline;
         }
-
     </style>
 </head>
 <body>
@@ -57,7 +56,7 @@
                 <th>Indirizzo</th>
                 <th>Città</th>
                 <th>Numeri di Telefono</th>
-                <th>CV</th> 
+                <th>CV</th>
             </tr>
         </thead>
         <tbody>
@@ -80,24 +79,23 @@
                     img.src = data[i].Foto;  
                     cell1.appendChild(img);
                     
-                    
                     row.insertCell(1).textContent = data[i].Nome;
                     row.insertCell(2).textContent = data[i].Cognome;
                     row.insertCell(3).textContent = data[i].Eta;
                     row.insertCell(4).textContent = data[i].Indirizzo;
                     row.insertCell(5).textContent = data[i].Citta;
 
-                    
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
                     
-                    
                     var cvLink = document.createElement("a");
-                    cvLink.onclick = function(){
-                        localStorage.setItem("json","tabella3.json")
-                        window.location.href="cv.html";
-                    }
                     cvLink.textContent = "Visualizza CV";
+                    cvLink.href = "cv.html";
+                    cvLink.onclick = function(index) {
+                        return function() {
+                            localStorage.setItem("userIndex", index);
+                        };
+                    }(i);
                     row.insertCell(7).appendChild(cvLink);
                 }
             }

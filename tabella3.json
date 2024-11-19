@@ -11,12 +11,12 @@
       "ufficio": "0234567890",
       "privato": "3456789012"
     },
-    "CV": "link_to_cv1.pdf"
+    "CV": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeTUoHh7YU-6n-LRO0RYV5965r7Q0KNrZVVA&s"
   },
   {
     "Foto": "https://media.gettyimages.com/id/1437816897/it/foto/ritratto-di-donna-daffari-manager-o-risorse-umane-per-il-successo-professionale-azienda-che.jpg?s=612x612&w=gi&k=20&c=KZU2wYH-vyXr7g0Zjjmffva52O-VtzrQe4cOW33SH-k=",
-    "Nome": "Giulia",
-    "Cognome": "Bianchi",
+    "Nome": "Cinzia",
+    "Cognome": "Bellini",
     "Eta": 28,
     "Indirizzo": "Via Milano 2",
     "Citta": "Roma",
@@ -25,6 +25,6 @@
       "ufficio": "0234567890",
       "privato": "3456789012"
     },
-    "CV": "link_to_cv2.pdf"
+    "CV": "https://www.ilcvperfetto.it/wp-content/uploads/sites/3/2023/06/esempio-Curriculum-grafico-pubblicitario-con-un-design-contemporaneo.svg"
   }
 ]

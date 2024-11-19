@@ -51,14 +51,6 @@
             margin-bottom: 5px;
         }
 
-        .section {
-            margin-bottom: 30px;
-        }
-
-        .section h3 {
-            color: #0288D1;
-        }
-
         .button {
             display: inline-block;
             background-color: #0288D1;
@@ -72,7 +64,6 @@
         .button:hover {
             background-color: #0277BD;
         }
-
     </style>
 </head>
 <body>
@@ -99,12 +90,10 @@
             </ul>
         </div>
 
-
         <a href="index.html" class="button">Torna alla Lista</a>
     </div>
 
     <script>
-        
         window.onload = function() {
             var userIndex = localStorage.getItem("userIndex");
             var data = [
@@ -138,11 +127,9 @@
                 }
             ];
 
-            
             if (userIndex !== null && userIndex >= 0 && userIndex < data.length) {
-                var user = data[userIndex]; 
+                var user = data[userIndex];
 
-                // Popoliamo il CV con i dati
                 document.getElementById("nome").textContent = user.Nome;
                 document.getElementById("cognome").textContent = user.Cognome;
                 document.getElementById("nomeCompleto").textContent = user.Nome + " " + user.Cognome;
@@ -153,9 +140,7 @@
                 document.getElementById("telefonoCasa").textContent = user.Telefono.casa;
                 document.getElementById("telefonoUfficio").textContent = user.Telefono.ufficio;
                 document.getElementById("telefonoPrivato").textContent = user.Telefono.privato;
-
             } else {
-    
                 alert("Dati utente non trovati.");
             }
         };
@@ -163,3 +148,4 @@
 
 </body>
 </html>
+

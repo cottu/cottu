@@ -93,10 +93,10 @@
                     
                     
                     var cvLink = document.createElement("a");
-                    cvLink.onclick = ()=>({
+                    cvLink.onclick = function(){
                         localStorage.setItem("json","tabella3.json")
                         window.location.href="cv.html";
-                    });
+                    }
                     cvLink.textContent = "Visualizza CV";
                     row.insertCell(7).appendChild(cvLink);
                 }

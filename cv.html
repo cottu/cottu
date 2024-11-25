@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Visualizzazione</title>
     <link rel="stylesheet" href="stiliCV.css">
 </head>
@@ -11,30 +13,7 @@
     </div>
 
     <script>
-        function caricaCV(cvFile) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', cvFile, true);  
-            xhr.onload = function() {
-                if (xhr.status === 200) {  
-                    try {
-                        var cvData = JSON.parse(xhr.responseText);  
-                        mostraCV(cvData);  
-                    } catch (error) {
-                        console.error("Errore nel parsing del CV JSON:", error);
-                        alert("Errore nel formato del file JSON.");
-                    }
-                } else {
-                    console.error("Errore nel caricamento del CV. Status:", xhr.status);
-                    alert("Non è stato possibile caricare il CV.");
-                }
-            };
-            xhr.onerror = function() {
-                console.error("Errore di rete durante il caricamento del CV.");
-                alert("Errore di rete durante il caricamento del CV.");
-            };
-            xhr.send();  
-        }
-
+        // Funzione per mostrare il CV
         function mostraCV(cvData) {
             const cvContent = document.getElementById('cv-content');
 
@@ -88,13 +67,16 @@
             `;
         }
 
-        const cvFile = localStorage.getItem('json');  
+        // Recupero dei dati dal localStorage
+        const cvFile = localStorage.getItem('json');  // Recupero i dati del CV da localStorage
 
         if (cvFile) {
-            caricaCV(cvFile);  
+            // Se i dati sono presenti, mostro il CV
+            const cvData = JSON.parse(cvFile);  // Parsifico il dato JSON
+            mostraCV(cvData);  
         } else {
-            alert('CV non trovato');
+            alert('CV non trovato');  // Se non ci sono dati, mostra un errore
         }
     </script>
 </body>
-
+</html>

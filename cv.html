@@ -68,15 +68,15 @@
         }
 
         // Recupero dei dati dal localStorage
-        const cvFile = localStorage.getItem('json');  // Recupero i dati del CV da localStorage
+        const cvData = localStorage.getItem('cvData');  // Recupero i dati del CV da localStorage
 
-        if (cvFile) {
+        if (cvData) {
             // Se i dati sono presenti, mostro il CV
-            const cvData = JSON.parse(cvFile);  // Parsifico il dato JSON
-            mostraCV(cvData);  
+            mostraCV(JSON.parse(cvData));  // Parsifico e mostro i dati
         } else {
             alert('CV non trovato');  // Se non ci sono dati, mostra un errore
         }
     </script>
 </body>
 </html>
+

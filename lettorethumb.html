@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    
-  
-<meta charset="UTF-8">
-    
-  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabella Anagrafica</title>
     <style>
-    
-
         body {
             font-family: Arial, sans-serif;
             background-color: #F0F8FF;
@@ -51,68 +45,25 @@
     </style>
 </head>
 <body>
-    
-   
-<h1>Anagrafica</h1>
-    
-  
-<table id="anagraficaTable">
-        
-      
-<thead>
+    <h1>Anagrafica</h1>
+    <table id="anagraficaTable">
+        <thead>
             <tr>
-                
-             
-
-      
-<th>Foto</th>
-                
-     
-<th>Nome</th>
-                
-           
-
-  
-<th>Cognome</th>
-                
-                
-<th>Età</th>
-                
-                <
-<th>Indirizzo</th>
+                <th>Foto</th>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
                 <th>Città</th>
-                
-    
-<th>Numeri di Telefono</th>
-                
-         
-<th>CV</th>
-            
-       
-</tr>
-        
-       
-</thead>
-        
-        <
-<tbody>
-        
-        </tbod
-</tbody>
-    
-    </tab
-</table>
+                <th>Numeri di Telefono</th>
+                <th>CV</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
     <script>
-        var xhr = new XMLHttpRequest();
-        var table = document.getElementById("anagrafic
-
-        var xhr = new XMLHttpRequest();
-        var table = document.getElementById("
-
-        var xhr = new XMLHttpRequest();
-        var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody
-
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
@@ -142,7 +93,7 @@
                     cvLink.href = "cv.html";
                     cvLink.onclick = function(index) {
                         return function() {
-                            localStorage.setItem("cvFile", data[index].CV);
+                            localStorage.setItem("cvFile", data[index].CV);  // Imposta il file CV corretto
                         };
                     }(i);
                     row.insertCell(7).appendChild(cvLink);
@@ -153,5 +104,3 @@
     </script>
 </body>
 </html>
-
-`

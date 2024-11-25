@@ -4,7 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Visualizzazione</title>
-    <link rel="stylesheet" href="stiliCV.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            padding: 20px;
+        }
+
+        .cv-container {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .cv-header h1 {
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #0288D1;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="cv-container">
@@ -13,7 +45,30 @@
     </div>
 
     <script>
-        // Funzione per mostrare il CV
+        function caricaCV(cvFile) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', cvFile, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    try {
+                        var cvData = JSON.parse(xhr.responseText);
+                        mostraCV(cvData);
+                    } catch (error) {
+                        console.error("Errore nel parsing del CV JSON:", error);
+                        alert("Errore nel formato del file JSON.");
+                    }
+                } else {
+                    console.error("Errore nel caricamento del CV. Status:", xhr.status);
+                    alert("Non è stato possibile caricare il CV.");
+                }
+            };
+            xhr.onerror = function() {
+                console.error("Errore di rete durante il caricamento del CV.");
+                alert("Errore di rete durante il caricamento del CV.");
+            };
+            xhr.send();
+        }
+
         function mostraCV(cvData) {
             const cvContent = document.getElementById('cv-content');
 
@@ -67,16 +122,13 @@
             `;
         }
 
-        // Recupero dei dati dal localStorage
-        const cvData = localStorage.getItem('cvData');  // Recupero i dati del CV da localStorage
+        const cvFile = localStorage.getItem('cvFile');
 
-        if (cvData) {
-            // Se i dati sono presenti, mostro il CV
-            mostraCV(JSON.parse(cvData));  // Parsifico e mostro i dati
+        if (cvFile) {
+            caricaCV(cvFile);
         } else {
-            alert('CV non trovato');  // Se non ci sono dati, mostra un errore
+            alert('CV non trovato');
         }
     </script>
 </body>
 </html>
-

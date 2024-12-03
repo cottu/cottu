@@ -7,41 +7,52 @@
 </head>
 <body>
     <h1>Portfolio</h1>
-    <div id="portfolio"></div>
+    <div id="portfolio"></div> <!-- Div che conterrà i progetti -->
 
     <script>
+        // Funzione per caricare il file XML e visualizzare i dati
         function loadPortfolio(file) {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", file, true);  // Carica il file XML specificato nella query string
+            var xhr = new XMLHttpRequest();  // Crea una nuova richiesta
+            xhr.open("GET", file, true);  // Carica il file XML passato come parametro
             xhr.onload = function() {
-                if (xhr.status === 200) {
-                    var xmlDoc = xhr.responseXML;
-                    var persona = xmlDoc.getElementsByTagName("persona")[0];  // Prendi il primo (e unico) "persona" nel file
-                    var lavori = persona.getElementsByTagName("lavoro");
-                    var portfolioDiv = document.getElementById("portfolio");
+                if (xhr.status === 200) {  // Verifica se la risposta è corretta
+                    var xmlDoc = xhr.responseXML;  // Ottieni la risposta come XML
+                    var lavori = xmlDoc.getElementsByTagName("lavoro");  // Estrai tutti i lavori
 
+                    var portfolioDiv = document.getElementById("portfolio");  // Trova il div dove mostrare i dati
+
+                    // Per ogni lavoro trovato nell'XML
                     for (var i = 0; i < lavori.length; i++) {
+                        // Estrai i dettagli di ciascun lavoro
                         var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
-                        var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
                         var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
+                        var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
+                        // Crea un nuovo div per visualizzare il lavoro
                         var lavoroDiv = document.createElement("div");
+
+                        // Aggiungi il titolo, descrizione e il link al div creato
                         lavoroDiv.innerHTML = `
                             <h3>${titolo}</h3>
                             <p>${descrizione}</p>
                             <a href="${link}" target="_blank">Vedi il lavoro</a>
                         `;
+
+                        // Aggiungi il div al div principale del portfolio
                         portfolioDiv.appendChild(lavoroDiv);
                     }
                 }
             };
-            xhr.send();
+            xhr.send();  // Invia la richiesta
         }
 
-        // Ottieni il parametro file dalla query string
-        var urlParams = new URLSearchParams(window.location.search);
-        var file = urlParams.get('file');  // Questo parametro sarà "marco.xml" o "cinzia.xml"
-        loadPortfolio(file);  // Carica il portfolio specificato nel parametro
+        // Ottieni il parametro 'file' dalla query string (es. ?file=marco.xml)
+        var urlParams = new URLSearchParams(window.location.search);  // Ottieni i parametri dalla URL
+        var file = urlParams.get('file');  // Il parametro 'file' sarà qualcosa come 'marco.xml'
+        
+        if (file) {
+            loadPortfolio(file);  // Carica il portfolio specificato nel parametro (ad esempio 'marco.xml' o 'cinzia.xml')
+        }
     </script>
 </body>
 </html>

@@ -36,7 +36,6 @@
                 for (var i = 0; i < data.length; i++) {
                     var row = table.insertRow();
                     
-                    // Aggiungi la foto
                     var cell1 = row.insertCell(0);
                     var img = document.createElement("img");
                     img.src = data[i].Foto;
@@ -49,17 +48,17 @@
                     row.insertCell(4).textContent = data[i].Indirizzo;
                     row.insertCell(5).textContent = data[i].Citta;
 
-                    // Aggiungi numeri di telefono
+                    
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
                     
-                    // Aggiungi il link al CV
+                
                     var cvLink = document.createElement("a");
                     cvLink.textContent = "Visualizza CV";
                     cvLink.href = "cv.html";  // Puoi cambiare con un URL dinamico per il CV specifico
                     cvLink.onclick = function(index) {
                         return function() {
-                            localStorage.setItem("cvFile", data[index].CV);  // Imposta il file CV corretto
+                            localStorage.setItem("cvFile", data[index].CV);  
                         };
                     }(i);
                     row.insertCell(7).appendChild(cvLink);

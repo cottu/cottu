@@ -16,6 +16,7 @@
             xhr.open("GET", file, true);  // Carica il file XML passato come parametro
             xhr.onload = function() {
                 if (xhr.status === 200) {  // Verifica se la risposta è corretta
+                    console.log(xhr.responseXML);  // Stampa il contenuto XML per il debug
                     var xmlDoc = xhr.responseXML;  // Ottieni la risposta come XML
                     var lavori = xmlDoc.getElementsByTagName("lavoro");  // Estrai tutti i lavori
 
@@ -41,6 +42,8 @@
                         // Aggiungi il div al div principale del portfolio
                         portfolioDiv.appendChild(lavoroDiv);
                     }
+                } else {
+                    console.error("Errore nel caricamento del file XML");
                 }
             };
             xhr.send();  // Invia la richiesta
@@ -52,6 +55,8 @@
         
         if (file) {
             loadPortfolio(file);  // Carica il portfolio specificato nel parametro (ad esempio 'marco.xml' o 'cinzia.xml')
+        } else {
+            console.error("File non specificato nella URL.");
         }
     </script>
 </body>

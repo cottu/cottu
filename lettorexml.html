@@ -4,63 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabella Anagrafica</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #F0F8FF;
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #0288D1;
-            color: white;
-        }
-
-        td img {
-            max-width: 50px;
-            max-height: 50px;
-            border-radius: 50%;
-        }
-
-        td a {
-            color: #0288D1;
-            text-decoration: none;
-        }
-
-        td a:hover {
-            text-decoration: underline;
-        }
-
-        .portfolio-icon {
-            width: 30px;
-            height: 30px;
-            background-color: #0288D1;
-            border-radius: 50%;
-            display: inline-block;
-            text-align: center;
-            vertical-align: middle;
-            color: white;
-            font-size: 16px;
-            line-height: 30px;
-            cursor: pointer;
-        }
-
-        .portfolio-icon:hover {
-            background-color: #01579B;
-        }
-    </style>
 </head>
 <body>
     <h1>Anagrafica</h1>
@@ -75,7 +18,7 @@
                 <th>Città</th>
                 <th>Numeri di Telefono</th>
                 <th>CV</th>
-                <th>Portfolio</th> <!-- Aggiunta colonna per il portfolio -->
+                <th>Portfolio</th>
             </tr>
         </thead>
         <tbody>
@@ -86,7 +29,7 @@
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
-        xhr.open("GET", "tabella3.json", true);  // Assicurati che il file JSON sia disponibile e formattato correttamente
+        xhr.open("GET", "tabella3.json", true);  // Assicurati che il file JSON sia disponibile
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -121,14 +64,14 @@
                     }(i);
                     row.insertCell(7).appendChild(cvLink);
                     
-                    
-                    var portfolioIconCell = row.insertCell(8);  
+                    // Aggiungi l'icona del portfolio
+                    var portfolioIconCell = row.insertCell(8);  // Aggiunta della cella per il portfolio
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");
-                    portfolioIcon.textContent = "P";  
+                    portfolioIcon.textContent = "P";  // Puoi usare qualsiasi simbolo o immagine per l'icona
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            window.location.href = "marco.xml";  // Link al portfolio in XML (modifica il percorso in base al tuo file)
+                            window.location.href = `portfolio_${data[index].Nome.toLowerCase()}_${data[index].Cognome.toLowerCase()}.xml`;  // Link al portfolio in XML
                         };
                     }(i);
                     portfolioIconCell.appendChild(portfolioIcon);

@@ -4,17 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anagrafica</title>
-    <style>
-        .portfolio-icon {
-            cursor: pointer;
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            display: inline-block;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
     <h1>Anagrafica</h1>
@@ -27,16 +16,17 @@
                 <th>Età</th>
                 <th>Indirizzo</th>
                 <th>Città</th>
-                <th>Telefono</th>
+                <th>Numeri di Telefono</th>
                 <th>CV</th>
                 <th>Portfolio</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+        </tbody>
     </table>
 
     <script>
-        // Caricamento dei dati dal file JSON
+        // Dati da tabella4.json
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
@@ -44,49 +34,44 @@
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
+                
+                // Popola la tabella
                 for (var i = 0; i < data.length; i++) {
                     var row = table.insertRow();
 
-                    // Colonna Foto
                     var cell1 = row.insertCell(0);
                     var img = document.createElement("img");
                     img.src = data[i].Foto;
-                    img.style.width = '50px';  // Imposta una larghezza per l'immagine
-                    img.style.height = '50px'; // Imposta un'altezza per l'immagine
+                    img.width = 50;
+                    img.height = 50;
                     cell1.appendChild(img);
 
-                    // Colonne Nome, Cognome, Età, Indirizzo, Città
                     row.insertCell(1).textContent = data[i].Nome;
                     row.insertCell(2).textContent = data[i].Cognome;
                     row.insertCell(3).textContent = data[i].Eta;
                     row.insertCell(4).textContent = data[i].Indirizzo;
                     row.insertCell(5).textContent = data[i].Citta;
 
-                    // Colonna Telefono
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
 
-                    // Colonna CV
+                    // CV - link
                     var cvLink = document.createElement("a");
                     cvLink.textContent = "Visualizza CV";
-                    cvLink.href = "cv.html";  // Questo è il link al CV, lo apriremo in una nuova pagina
-                    cvLink.onclick = function(index) {
-                        return function() {
-                            localStorage.setItem("cvFile", data[index].CV);  // Salviamo il CV nel localStorage
-                        };
-                    }(i);
+                    cvLink.href = "cv.html";  // Pagina dove visualizzare il CV
                     row.insertCell(7).appendChild(cvLink);
 
-                    // Colonna Portfolio (Icona cliccabile)
+                    // Portfolio - icona cliccabile
                     var portfolioIconCell = row.insertCell(8);
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");
-                    portfolioIcon.textContent = "Portfolio";  // Text che rappresenta il Portfolio
+                    portfolioIcon.textContent = "P";  // Semplice simbolo "P" per il portfolio
+                    portfolioIcon.style.cursor = "pointer";
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            // Salviamo il nome del file XML del portfolio nel localStorage
+                            // Salva nel localStorage il file XML del portfolio
                             localStorage.setItem("portfolioFile", data[index].Portfolio);
-                            window.location.href = "portfolio.html";  // Reindirizza alla pagina del portfolio
+                            window.location.href = "portfolio.html";  // Vai alla pagina del portfolio
                         };
                     }(i);
                     portfolioIconCell.appendChild(portfolioIcon);

@@ -7,52 +7,35 @@
 </head>
 <body>
     <h1>Portfolio</h1>
-    <div id="portfolio"></div> <!-- Div che conterrà i progetti -->
+    <div id="portfolio"></div>
 
     <script>
-        // Funzione per caricare il file XML e visualizzare i dati
-        function loadPortfolio(file) {
-            var xhr = new XMLHttpRequest();  // Crea una nuova richiesta
-            xhr.open("GET", file, true);  // Carica il file XML passato come parametro
+        var portfolioFile = localStorage.getItem("portfolioFile");  // Ottieni il nome del file dal localStorage
+
+        if (portfolioFile) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", portfolioFile, true);
             xhr.onload = function() {
-                if (xhr.status === 200) {  // Verifica se la risposta è corretta
-                    console.log(xhr.responseXML);  // Stampa il contenuto XML per il debug
-                    var xmlDoc = xhr.responseXML;  // Ottieni la risposta come XML
-                    var lavori = xmlDoc.getElementsByTagName("lavoro");  // Estrai tutti i lavori
+                if (xhr.status === 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var lavori = xmlDoc.getElementsByTagName("lavoro");
+                    var container = document.getElementById("portfolio");
 
-                    var portfolioDiv = document.getElementById("portfolio");  // Trova il div dove mostrare i dati
-
-                    // Per ogni lavoro trovato nell'XML
                     for (var i = 0; i < lavori.length; i++) {
-                        // Estrai i dettagli di ciascun lavoro
                         var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
                         var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
                         var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
-                        // Crea un nuovo div per visualizzare il lavoro
-                        var lavoroDiv = document.createElement("div");
-
-                        // Aggiungi il titolo, descrizione e il link al div creato
-                        lavoroDiv.innerHTML = `
-                            <h3>${titolo}</h3>
-                            <p>${descrizione}</p>
-                            <a href="${link}" target="_blank">Vedi il lavoro</a>
-                        `;
-
-                        // Aggiungi il div al div principale del portfolio
-                        portfolioDiv.appendChild(lavoroDiv);
+                        var div = document.createElement("div");
+                        div.innerHTML = "<h2>" + titolo + "</h2><p>" + descrizione + "</p><a href='" + link + "'>Vedi Progetto</a>";
+                        container.appendChild(div);
                     }
-                } else {
-                    console.error("Errore nel caricamento del file XML");
                 }
             };
-            xhr.send();  // Invia la richiesta
+            xhr.send();
+        } else {
+            document.getElementById("portfolio").innerHTML = "Nessun portfolio trovato.";
         }
-
-        // Ottieni il parametro 'file' dalla query string (es. ?file=marco.xml)
-        var urlParams = new URLSearchParams(window.location.search);  // Ottieni i parametri dalla URL
-        var file = urlParams.get('file');  // Il parametro 'file' sarà qualcosa come 'marco.xml'
-    
     </script>
 </body>
 </html>

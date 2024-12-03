@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portfolio>
+    <candidato>
+        <nome>Cinzia Bellini</nome>
+        <ruolo>Sviluppatrice Software</ruolo>
+        <bio>Sviluppatrice full-stack con esperienza in JavaScript, Python, e tecnologie backend.</bio>
+        <lavori>
+            <lavoro>
+                <titolo>Sviluppo eCommerce</titolo>
+                <descrizione>Progettazione e sviluppo di un'applicazione e-commerce per un cliente retail.</descrizione>
+                <anno>2023</anno>
+                <link>https://example.com/progetto1</link>
+            </lavoro>
+        </lavori>
+    </candidato>
+</portfolio>

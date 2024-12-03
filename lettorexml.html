@@ -29,7 +29,7 @@
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
-        xhr.open("GET", "tabella3.json", true);  // Assicurati che il file JSON sia disponibile
+        xhr.open("GET", "tabella3.json", true); 
         xhr.onload = function() {
             if (xhr.status === 200) {
                 var data = JSON.parse(xhr.responseText);
@@ -41,7 +41,7 @@
                     img.src = data[i].Foto;
                     cell1.appendChild(img);
                     
-                    // Aggiungi le informazioni personali
+                    
                     row.insertCell(1).textContent = data[i].Nome;
                     row.insertCell(2).textContent = data[i].Cognome;
                     row.insertCell(3).textContent = data[i].Eta;
@@ -55,7 +55,7 @@
                 
                     var cvLink = document.createElement("a");
                     cvLink.textContent = "Visualizza CV";
-                    cvLink.href = "cv.html";  // Puoi cambiare con un URL dinamico per il CV specifico
+                    cvLink.href = "cv.html";  
                     cvLink.onclick = function(index) {
                         return function() {
                             localStorage.setItem("cvFile", data[index].CV);  
@@ -63,14 +63,14 @@
                     }(i);
                     row.insertCell(7).appendChild(cvLink);
                     
-                    // Aggiungi l'icona del portfolio
-                    var portfolioIconCell = row.insertCell(8);  // Aggiunta della cella per il portfolio
+                    
+                    var portfolioIconCell = row.insertCell(8);   
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");
-                    portfolioIcon.textContent = "P";  // Puoi usare qualsiasi simbolo o immagine per l'icona
+                    portfolioIcon.textContent = "P";  
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            window.location.href = `portfolio_${data[index].Nome.toLowerCase()}_${data[index].Cognome.toLowerCase()}.xml`;  // Link al portfolio in XML
+                            window.location.href = `marco.xml`;  // Link al portfolio in XML
                         };
                     }(i);
                     portfolioIconCell.appendChild(portfolioIcon);

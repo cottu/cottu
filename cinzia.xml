@@ -6,10 +6,22 @@
         <bio>Sviluppatrice full-stack con esperienza in JavaScript, Python, e tecnologie backend.</bio>
         <lavori>
             <lavoro>
-                <titolo>Sviluppo eCommerce</titolo>
+                <titolo>Sviluppo eCommerce per Clienti Retail</titolo>
                 <descrizione>Progettazione e sviluppo di un'applicazione e-commerce per un cliente retail.</descrizione>
                 <anno>2023</anno>
-                <link>https://richestsoft.com/it/blog/online-shopping-app-development/</link>
+                <link>https://www.moz.com/blog/what-is-ecommerce/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Realizzazione di Applicazioni Mobile</titolo>
+                <descrizione>Sviluppo di app mobile per aziende con particolare attenzione all'usabilità.</descrizione>
+                <anno>2022</anno>
+                <link>https://www.upwork.com/hire/mobile-app-developers/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Progettazione di Sistemi Cloud</titolo>
+                <descrizione>Progettazione e implementazione di soluzioni cloud personalizzate per piccole e medie imprese.</descrizione>
+                <anno>2021</anno>
+                <link>https://www.digitalocean.com/</link>
             </lavoro>
         </lavori>
     </candidato>

@@ -1,32 +1,47 @@
-<portfolio>
-  <persona>
-    <nome>Marco</nome>
-    <cognome>Bianchi</cognome>
-    <eta>30</eta>
-    <indirizzo>Via Roma 1</indirizzo>
-    <citta>Milano</citta>
-    <telefono>
-      <casa>0123456789</casa>
-      <ufficio>0234567890</ufficio>
-      <privato>3456789012</privato>
-    </telefono>
-    <cv>marco.json</cv>
-  </persona>
-  <lavori>
-    <lavoro>
-      <titolo>Sviluppo software per azienda XYZ</titolo>
-      <link>https://www.example.com/lavoro1</link>
-      <descrizione>Progetto di sviluppo di un'applicazione per la gestione di dati aziendali.</descrizione>
-    </lavoro>
-    <lavoro>
-      <titolo>Progettazione di siti web</titolo>
-      <link>https://www.example.com/lavoro2</link>
-      <descrizione>Progettazione di siti web dinamici e responsive per diversi clienti.</descrizione>
-    </lavoro>
-    <lavoro>
-      <titolo>Consulting per digital marketing</titolo>
-      <link>https://www.example.com/lavoro3</link>
-      <descrizione>Consulenza su strategie di marketing digitale per PMI.</descrizione>
-    </lavoro>
-  </lavori>
-</portfolio>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1>Portfolio</h1>
+    <div id="portfolio"></div>
+
+    <script>
+        function loadPortfolio(file) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", file, true);  // Carica il file XML specificato nella query string
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var xmlDoc = xhr.responseXML;
+                    var persona = xmlDoc.getElementsByTagName("persona")[0];  // Prendi il primo (e unico) "persona" nel file
+                    var lavori = persona.getElementsByTagName("lavoro");
+                    var portfolioDiv = document.getElementById("portfolio");
+
+                    for (var i = 0; i < lavori.length; i++) {
+                        var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
+                        var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                        var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
+
+                        var lavoroDiv = document.createElement("div");
+                        lavoroDiv.innerHTML = `
+                            <h3>${titolo}</h3>
+                            <p>${descrizione}</p>
+                            <a href="${link}" target="_blank">Vedi il lavoro</a>
+                        `;
+                        portfolioDiv.appendChild(lavoroDiv);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Ottieni il parametro file dalla query string
+        var urlParams = new URLSearchParams(window.location.search);
+        var file = urlParams.get('file');  // Questo parametro sarà "marco.xml" o "cinzia.xml"
+        loadPortfolio(file);  // Carica il portfolio specificato nel parametro
+    </script>
+</body>
+</html>

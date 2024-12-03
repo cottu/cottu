@@ -26,7 +26,6 @@
     </table>
 
     <script>
-        // Dati da tabella4.json
         var xhr = new XMLHttpRequest();
         var table = document.getElementById("anagraficaTable").getElementsByTagName('tbody')[0];
 
@@ -54,24 +53,20 @@
 
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
-
-                    // CV - link
                     var cvLink = document.createElement("a");
                     cvLink.textContent = "Visualizza CV";
                     cvLink.href = "cv.html";  // Pagina dove visualizzare il CV
                     row.insertCell(7).appendChild(cvLink);
 
-                    // Portfolio - icona cliccabile
                     var portfolioIconCell = row.insertCell(8);
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");
-                    portfolioIcon.textContent = "P";  // Semplice simbolo "P" per il portfolio
+                    portfolioIcon.textContent = "Visualizza Portfolio";  
                     portfolioIcon.style.cursor = "pointer";
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            // Salva nel localStorage il file XML del portfolio
                             localStorage.setItem("portfolioFile", data[index].Portfolio);
-                            window.location.href = "portfolio.html";  // Vai alla pagina del portfolio
+                            window.location.href = "portfolio.html"; 
                         };
                     }(i);
                     portfolioIconCell.appendChild(portfolioIcon);

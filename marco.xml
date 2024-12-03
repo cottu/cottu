@@ -1,32 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <portfolio>
-  <persona>
-    <nome>Marco</nome>
-    <cognome>Bianchi</cognome>
-    <eta>30</eta>
-    <indirizzo>Via Roma 1</indirizzo>
-    <citta>Milano</citta>
-    <telefono>
-      <casa>0123456789</casa>
-      <ufficio>0234567890</ufficio>
-      <privato>3456789012</privato>
-    </telefono>
-    <cv>marco.json</cv>
-  </persona>
-  <lavori>
-    <lavoro>
-      <titolo>Sviluppo software per azienda</titolo>
-      <link>https://www.saep.it/servizi/sviluppo-software/</link>
-      <descrizione>Progetto di sviluppo di un'applicazione per la gestione di dati aziendali.</descrizione>
-    </lavoro>
-    <lavoro>
-      <titolo>Progettazione di siti web</titolo>
-      <link>https://b-plannow.com/progettazione-siti-web-le-fasi-per-la-realizzazione-passo-passo/</link>
-      <descrizione>Progettazione di siti web dinamici e responsive per diversi clienti.</descrizione>
-    </lavoro>
-    <lavoro>
-      <titolo>https://www.digitalmarketingconsulting.io/</titolo>
-      <link></link>
-      <descrizione>Consulenza su strategie di marketing digitale </descrizione>
-    </lavoro>
-  </lavori>
+    <candidato>
+        <nome>Marco Bianchi</nome>
+        <ruolo>Sviluppatore Software</ruolo>
+        <bio>Sviluppatore full-stack con esperienza in JavaScript, Python, e tecnologie backend.</bio>
+        <lavori>
+            <lavoro>
+                <titolo>Sviluppo Software per Saep</titolo>
+                <descrizione>Progettazione e sviluppo di software per migliorare i servizi aziendali.</descrizione>
+                <anno>2023</anno>
+                <link>https://www.saep.it/servizi/sviluppo-software/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Progettazione Siti Web per B-PlanNow</titolo>
+                <descrizione>Fasi per la realizzazione di un sito web dinamico e responsive per clienti aziendali.</descrizione>
+                <anno>2022</anno>
+                <link>https://b-plannow.com/progettazione-siti-web-le-fasi-per-la-realizzazione-passo-passo/</link>
+            </lavoro>
+            <lavoro>
+                <titolo>Consulting per Digital Marketing</titolo>
+                <descrizione>Consulenza strategica per PMI in ambito digital marketing e SEO.</descrizione>
+                <anno>2021</anno>
+                <link>https://www.digitalmarketingconsulting.io/</link>
+            </lavoro>
+        </lavori>
+    </candidato>
 </portfolio>

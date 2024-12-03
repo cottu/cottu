@@ -1,0 +1,32 @@
+<portfolio>
+  <persona>
+    <nome>Marco</nome>
+    <cognome>Rossi</cognome>
+    <eta>30</eta>
+    <indirizzo>Via Roma 1</indirizzo>
+    <citta>Milano</citta>
+    <telefono>
+      <casa>0123456789</casa>
+      <ufficio>0234567890</ufficio>
+      <privato>3456789012</privato>
+    </telefono>
+    <cv>giulia.json</cv>
+  </persona>
+  <lavori>
+    <lavoro>
+      <titolo>Sviluppo software per azienda XYZ</titolo>
+      <link>https://www.example.com/lavoro1</link>
+      <descrizione>Progetto di sviluppo di un'applicazione per la gestione di dati aziendali.</descrizione>
+    </lavoro>
+    <lavoro>
+      <titolo>Progettazione di siti web</titolo>
+      <link>https://www.example.com/lavoro2</link>
+      <descrizione>Progettazione di siti web dinamici e responsive per diversi clienti.</descrizione>
+    </lavoro>
+    <lavoro>
+      <titolo>Consulting per digital marketing</titolo>
+      <link>https://www.example.com/lavoro3</link>
+      <descrizione>Consulenza su strategie di marketing digitale per PMI.</descrizione>
+    </lavoro>
+  </lavori>
+</portfolio>

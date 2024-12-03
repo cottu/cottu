@@ -1,0 +1,30 @@
+[
+  {
+    "Foto": "https://media.gettyimages.com/id/1158014305/it/foto/colpo-alla-testa-di-un-adolescente.jpg?s=612x612&w=gi&k=20&c=GDb7vsSFQqSCw7s-ugnDvccGWscoDtphAhnVQS7WD9U=",
+    "Nome": "Mario",
+    "Cognome": "Rossi",
+    "Eta": 30,
+    "Indirizzo": "Via Roma 1",
+    "Citta": "Milano",
+    "Telefono": {
+      "casa": "0123456789",
+      "ufficio": "0234567890",
+      "privato": "3456789012"
+    },
+    "CV": "giulia.json"
+  },
+  {
+    "Foto": "https://media.gettyimages.com/id/1437816897/it/foto/ritratto-di-donna-daffari-manager-o-risorse-umane-per-il-successo-professionale-azienda-che.jpg?s=612x612&w=gi&k=20&c=KZU2wYH-vyXr7g0Zjjmffva52O-VtzrQe4cOW33SH-k=",
+    "Nome": "Cinzia",
+    "Cognome": "Bellini",
+    "Eta": 28,
+    "Indirizzo": "Via Milano 2",
+    "Citta": "Roma",
+    "Telefono": {
+      "casa": "0123456789",
+      "ufficio": "0234567890",
+      "privato": "3456789012"
+    },
+    "CV": "marco.json"
+  }
+]

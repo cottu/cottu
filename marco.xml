@@ -14,19 +14,19 @@
   </persona>
   <lavori>
     <lavoro>
-      <titolo>Sviluppo software per azienda XYZ</titolo>
-      <link>https://www.example.com/lavoro1</link>
+      <titolo>Sviluppo software per azienda</titolo>
+      <link>https://www.saep.it/servizi/sviluppo-software/</link>
       <descrizione>Progetto di sviluppo di un'applicazione per la gestione di dati aziendali.</descrizione>
     </lavoro>
     <lavoro>
       <titolo>Progettazione di siti web</titolo>
-      <link>https://www.example.com/lavoro2</link>
+      <link>https://b-plannow.com/progettazione-siti-web-le-fasi-per-la-realizzazione-passo-passo/</link>
       <descrizione>Progettazione di siti web dinamici e responsive per diversi clienti.</descrizione>
     </lavoro>
     <lavoro>
-      <titolo>Consulting per digital marketing</titolo>
-      <link>https://www.example.com/lavoro3</link>
-      <descrizione>Consulenza su strategie di marketing digitale per PMI.</descrizione>
+      <titolo>https://www.digitalmarketingconsulting.io/</titolo>
+      <link></link>
+      <descrizione>Consulenza su strategie di marketing digitale </descrizione>
     </lavoro>
   </lavori>
 </portfolio>

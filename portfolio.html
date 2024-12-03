@@ -52,12 +52,7 @@
         // Ottieni il parametro 'file' dalla query string (es. ?file=marco.xml)
         var urlParams = new URLSearchParams(window.location.search);  // Ottieni i parametri dalla URL
         var file = urlParams.get('file');  // Il parametro 'file' sarà qualcosa come 'marco.xml'
-        
-        if (file) {
-            loadPortfolio(file);  // Carica il portfolio specificato nel parametro (ad esempio 'marco.xml' o 'cinzia.xml')
-        } else {
-            console.error("File non specificato nella URL.");
-        }
+    
     </script>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio di Mario Rossi</title>
+</head>
+<body>
+  <h1>Portfolio di Mario Rossi</h1>
+  <div id="portfolio"></div>
+
+  <script>
+    // Funzione per caricare l'XML
+    function loadPortfolio() {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", "portfolio_mario.xml", true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          var xmlDoc = xhr.responseXML;
+          var lavori = xmlDoc.getElementsByTagName("lavoro");
+          var container = document.getElementById("portfolio");
+
+          // Loop attraverso i lavori e aggiungere alla pagina
+          for (var i = 0; i < lavori.length; i++) {
+            var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
+            var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
+            var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+
+            // Creazione degli elementi HTML per ogni lavoro
+            var div = document.createElement("div");
+            div.innerHTML = "<h2>" + titolo + "</h2><p>" + descrizione + "</p><a href='" + link + "'>Vedi Progetto</a>";
+            container.appendChild(div);
+          }
+        }
+      };
+      xhr.send();
+    }
+
+    loadPortfolio(); // Carica il portfolio all'avvio della pagina
+  </script>
+</body>
+</html>

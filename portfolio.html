@@ -10,9 +10,11 @@
     <div id="portfolio"></div>
 
     <script>
-        var portfolioFile = localStorage.getItem("portfolioFile");  // Ottieni il nome del file dal localStorage
+        // Recupera il nome del file XML salvato nel localStorage
+        var portfolioFile = localStorage.getItem("portfolioFile");
 
         if (portfolioFile) {
+            // Carica il file XML associato al portfolio
             var xhr = new XMLHttpRequest();
             xhr.open("GET", portfolioFile, true);
             xhr.onload = function() {
@@ -21,20 +23,23 @@
                     var lavori = xmlDoc.getElementsByTagName("lavoro");
                     var container = document.getElementById("portfolio");
 
+                    // Aggiungi i lavori al portfolio
                     for (var i = 0; i < lavori.length; i++) {
-                        var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
-                        var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
-                        var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
+                        var titolo = lavori[i].getElementsByTagName("titolo")[0].textContent;
+                        var descrizione = lavori[i].getElementsByTagName("descrizione")[0].textContent;
+                        var link = lavori[i].getElementsByTagName("link")[0].textContent;
 
                         var div = document.createElement("div");
-                        div.innerHTML = "<h2>" + titolo + "</h2><p>" + descrizione + "</p><a href='" + link + "'>Vedi Progetto</a>";
+                        div.innerHTML = `<h2>${titolo}</h2><p>${descrizione}</p><a href="${link}" target="_blank">Vedi Progetto</a>`;
                         container.appendChild(div);
                     }
+                } else {
+                    document.getElementById("portfolio").innerHTML = "Nessun portfolio trovato.";
                 }
             };
             xhr.send();
         } else {
-            document.getElementById("portfolio").innerHTML = "Nessun portfolio trovato.";
+            document.getElementById("portfolio").innerHTML = "Nessun portfolio selezionato.";
         }
     </script>
 </body>

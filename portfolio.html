@@ -10,11 +10,9 @@
     <div id="portfolio"></div>
 
     <script>
-        // Recupera il nome del file XML salvato nel localStorage
         var portfolioFile = localStorage.getItem("portfolioFile");
 
         if (portfolioFile) {
-            // Carica il file XML associato al portfolio
             var xhr = new XMLHttpRequest();
             xhr.open("GET", portfolioFile, true);
             xhr.onload = function() {
@@ -23,7 +21,6 @@
                     var lavori = xmlDoc.getElementsByTagName("lavoro");
                     var container = document.getElementById("portfolio");
 
-                    // Aggiungi i lavori al portfolio
                     for (var i = 0; i < lavori.length; i++) {
                         var titolo = lavori[i].getElementsByTagName("titolo")[0].textContent;
                         var descrizione = lavori[i].getElementsByTagName("descrizione")[0].textContent;

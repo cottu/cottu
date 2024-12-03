@@ -10,7 +10,7 @@
   <div id="portfolio"></div>
 
   <script>
-    // Funzione per caricare l'XML
+   
     function loadPortfolio() {
       var xhr = new XMLHttpRequest();
       xhr.open("GET", "portfolio_mario.xml", true);
@@ -20,13 +20,13 @@
           var lavori = xmlDoc.getElementsByTagName("lavoro");
           var container = document.getElementById("portfolio");
 
-          // Loop attraverso i lavori e aggiungere alla pagina
+          
           for (var i = 0; i < lavori.length; i++) {
             var titolo = lavori[i].getElementsByTagName("titolo")[0].childNodes[0].nodeValue;
             var descrizione = lavori[i].getElementsByTagName("descrizione")[0].childNodes[0].nodeValue;
             var link = lavori[i].getElementsByTagName("link")[0].childNodes[0].nodeValue;
 
-            // Creazione degli elementi HTML per ogni lavoro
+           
             var div = document.createElement("div");
             div.innerHTML = "<h2>" + titolo + "</h2><p>" + descrizione + "</p><a href='" + link + "'>Vedi Progetto</a>";
             container.appendChild(div);
@@ -36,7 +36,7 @@
       xhr.send();
     }
 
-    loadPortfolio(); // Carica il portfolio all'avvio della pagina
+    loadPortfolio(); 
   </script>
 </body>
 </html>

@@ -121,14 +121,14 @@
                     }(i);
                     row.insertCell(7).appendChild(cvLink);
                     
-                    // Aggiungi l'icona del portfolio
-                    var portfolioIconCell = row.insertCell(8);  // Aggiunta della cella per il portfolio
+                    
+                    var portfolioIconCell = row.insertCell(8);  
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");
-                    portfolioIcon.textContent = "P";  // Puoi usare qualsiasi simbolo o immagine per l'icona
+                    portfolioIcon.textContent = "P";  
                     portfolioIcon.onclick = function(index) {
                         return function() {
-                            window.location.href = "portfolio_mario.xml";  // Link al portfolio in XML (modifica il percorso in base al tuo file)
+                            window.location.href = "marco.xml";  // Link al portfolio in XML (modifica il percorso in base al tuo file)
                         };
                     }(i);
                     portfolioIconCell.appendChild(portfolioIcon);

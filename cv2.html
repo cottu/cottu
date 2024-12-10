@@ -36,6 +36,10 @@
                 }
             };
             xhr.send();
+            var cvLink = document.createElement("a");
+                    cvLink.textContent = "Visualizza CV";
+                    cvLink.href = "cv.html";  
+                    row.insertCell(7).appendChild(cvLink);
         }
 
         // Ottieni il parametro file dalla query string

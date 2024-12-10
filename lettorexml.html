@@ -52,15 +52,16 @@
 
                     var phoneNumbers = `${data[i].Telefono.casa}, ${data[i].Telefono.ufficio}, ${data[i].Telefono.privato}`;
                     row.insertCell(6).textContent = phoneNumbers;
+                    
                     var cvLink = document.createElement("a");
-                    cvLink.textContent = "Visualizza CV";
-                    cvLink.href = "cv.html";
-                    cvLink.onclick = function(index) {
-                        return function() {
-                            localStorage.setItem("cvFile", data[index].CV);  
-                        };
-                    }(i);
-                    row.insertCell(7).appendChild(cvLink);
+                cvLink.textContent = "Visualizza CV";
+                cvLink.href = "cv.html";
+                cvLink.onclick = (function(index) {
+                    return function() {
+                        localStorage.setItem("cvFile", data[index].CV);
+                    };
+                })(i); // Usa una funzione di auto-esecuzione per passare l'indice corretto
+                row.insertCell(7).appendChild(cvLink);
                     var portfolioIconCell = row.insertCell(8);
                     var portfolioIcon = document.createElement("div");
                     portfolioIcon.classList.add("portfolio-icon");

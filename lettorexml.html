@@ -60,7 +60,7 @@
                     return function() {
                         localStorage.setItem("cvFile", data[index].CV);
                     };
-                })(i); // Usa una funzione di auto-esecuzione per passare l'indice corretto
+                })(i); 
                 row.insertCell(7).appendChild(cvLink);
                     var portfolioIconCell = row.insertCell(8);
                     var portfolioIcon = document.createElement("div");

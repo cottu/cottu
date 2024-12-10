@@ -72,54 +72,47 @@
         function mostraCV(cvData) {
             const cvContent = document.getElementById('cv-content');
 
-            cvContent.innerHTML = `
-                <header class="cv-header">
-                    <h1>${cvData.nome}</h1>
-                    <p><strong>Email:</strong> ${cvData.email}</p>
-                    <p><strong>Età:</strong> ${cvData.eta}</p>
-                </header>
+            var htmlContent = '';
 
-                <section class="cv-experienza">
-                    <h2>Esperienza Lavorativa</h2>
-                    <ul>
-                        ${cvData.esperienza.map(exp => `
-                            <li>
-                                <strong>${exp.ruolo}</strong> presso ${exp.azienda} (${exp.anno_inizio} - ${exp.anno_fine})
-                                <p>${exp.descrizione}</p>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </section>
+// Aggiungi informazioni di base
+htmlContent += '<header><h1>' + cvData.nome + '</h1><p>Email: ' + cvData.email + '</p><p>Età: ' + cvData.eta + '</p></header>';
 
-                <section class="cv-istruzione">
-                    <h2>Istruzione</h2>
-                    <ul>
-                        ${cvData.istruzione.map(istruzione => `
-                            <li>
-                                <strong>${istruzione.titolo}</strong> presso ${istruzione.universita} (${istruzione.anno})
-                            </li>
-                        `).join('')}
-                    </ul>
-                </section>
+// Esperienza Lavorativa
+htmlContent += '<section><h2>Esperienza Lavorativa</h2><ul>';
+for (var i = 0; i < cvData.esperienza.length; i++) {
+    var exp = cvData.esperienza[i];
+    htmlContent += '<li>' + exp.ruolo + ' presso ' + exp.azienda + ' (' + exp.anno_inizio + ' - ' + exp.anno_fine + ')<p>' + exp.descrizione + '</p></li>';
+}
+if (cvData.esperienza.length == 0) htmlContent += '<li>No esperienze lavorative.</li>';
+htmlContent += '</ul></section>';
 
-                <section class="cv-competenze">
-                    <h2>Competenze</h2>
-                    <ul>
-                        ${cvData.competenze.map(comp => `
-                            <li>${comp}</li>
-                        `).join('')}
-                    </ul>
-                </section>
+// Istruzione
+htmlContent += '<section><h2>Istruzione</h2><ul>';
+for (var i = 0; i < cvData.istruzione.length; i++) {
+    var istruzione = cvData.istruzione[i];
+    htmlContent += '<li>' + istruzione.titolo + ' presso ' + istruzione.universita + ' (' + istruzione.anno + ')</li>';
+}
+if (cvData.istruzione.length == 0) htmlContent += '<li>No istruzione disponibile.</li>';
+htmlContent += '</ul></section>';
 
-                <section class="cv-lingue">
-                    <h2>Lingue</h2>
-                    <ul>
-                        ${cvData.lingue.map(lingua => `
-                            <li><strong>${lingua.lingua}</strong> - ${lingua.livello}</li>
-                        `).join('')}
-                    </ul>
-                </section>
-            `;
+// Competenze
+htmlContent += '<section><h2>Competenze</h2><ul>';
+for (var i = 0; i < cvData.competenze.length; i++) {
+    htmlContent += '<li>' + cvData.competenze[i] + '</li>';
+}
+if (cvData.competenze.length == 0) htmlContent += '<li>No competenze indicate.</li>';
+htmlContent += '</ul></section>';
+
+// Lingue
+htmlContent += '<section><h2>Lingue</h2><ul>';
+for (var i = 0; i < cvData.lingue.length; i++) {
+    htmlContent += '<li>' + cvData.lingue[i].lingua + ' - ' + cvData.lingue[i].livello + '</li>';
+}
+if (cvData.lingue.length == 0) htmlContent += '<li>No lingue indicate.</li>';
+htmlContent += '</ul></section>';
+
+// Imposta il contenuto HTML
+cvContent.innerHTML = htmlContent;
         }
 
         const cvFile = localStorage.getItem('cvFile');

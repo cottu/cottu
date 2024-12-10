@@ -68,52 +68,38 @@
             };
             xhr.send();
         }
+    function mostraCV(cvData) {
+    const cvContent = document.getElementById('cv-content');
+    var htmlContent = '';
 
-        function mostraCV(cvData) {
-            const cvContent = document.getElementById('cv-content');
-
-            var htmlContent = '';
-
-// Aggiungi informazioni di base
-htmlContent += '<header><h1>' + cvData.nome + '</h1><p>Email: ' + cvData.email + '</p><p>Età: ' + cvData.eta + '</p></header>';
-
-// Esperienza Lavorativa
-htmlContent += '<section><h2>Esperienza Lavorativa</h2><ul>';
-for (var i = 0; i < cvData.esperienza.length; i++) {
-    var exp = cvData.esperienza[i];
-    htmlContent += '<li>' + exp.ruolo + ' presso ' + exp.azienda + ' (' + exp.anno_inizio + ' - ' + exp.anno_fine + ')<p>' + exp.descrizione + '</p></li>';
-}
-if (cvData.esperienza.length == 0) htmlContent += '<li>No esperienze lavorative.</li>';
-htmlContent += '</ul></section>';
-
-// Istruzione
-htmlContent += '<section><h2>Istruzione</h2><ul>';
-for (var i = 0; i < cvData.istruzione.length; i++) {
-    var istruzione = cvData.istruzione[i];
-    htmlContent += '<li>' + istruzione.titolo + ' presso ' + istruzione.universita + ' (' + istruzione.anno + ')</li>';
-}
-if (cvData.istruzione.length == 0) htmlContent += '<li>No istruzione disponibile.</li>';
-htmlContent += '</ul></section>';
-
-// Competenze
-htmlContent += '<section><h2>Competenze</h2><ul>';
-for (var i = 0; i < cvData.competenze.length; i++) {
-    htmlContent += '<li>' + cvData.competenze[i] + '</li>';
-}
-if (cvData.competenze.length == 0) htmlContent += '<li>No competenze indicate.</li>';
-htmlContent += '</ul></section>';
-
-// Lingue
-htmlContent += '<section><h2>Lingue</h2><ul>';
-for (var i = 0; i < cvData.lingue.length; i++) {
-    htmlContent += '<li>' + cvData.lingue[i].lingua + ' - ' + cvData.lingue[i].livello + '</li>';
-}
-if (cvData.lingue.length == 0) htmlContent += '<li>No lingue indicate.</li>';
-htmlContent += '</ul></section>';
-
-// Imposta il contenuto HTML
-cvContent.innerHTML = htmlContent;
+    // Funzione per generare le liste
+    function creaSezione(titolo, array, descrizione) {
+        htmlContent += '<section><h2>' + titolo + '</h2><ul>';
+        if (array.length === 0) {
+            htmlContent += '<li>' + descrizione + '</li>';
+        } else {
+            for (var i = 0; i < array.length; i++) {
+                htmlContent += '<li>' + array[i].ruolo || array[i].titolo || array[i].lingua + ' ' + (array[i].azienda || array[i].universita || array[i].livello) + ' (' + (array[i].anno_inizio || array[i].anno || '') + ' - ' + (array[i].anno_fine || '') + ')';
+                if (array[i].descrizione) htmlContent += '<p>' + array[i].descrizione + '</p>';
+                htmlContent += '</li>';
+            }
         }
+        htmlContent += '</ul></section>';
+    }
+
+    // Aggiungi informazioni di base
+    htmlContent += '<header><h1>' + cvData.nome + '</h1><p>Email: ' + cvData.email + '</p><p>Età: ' + cvData.eta + '</p></header>';
+
+    // Crea le sezioni
+    creaSezione('Esperienza Lavorativa', cvData.esperienza, 'No esperienze lavorative.');
+    creaSezione('Istruzione', cvData.istruzione, 'No istruzione disponibile.');
+    creaSezione('Competenze', cvData.competenze, 'No competenze indicate.');
+    creaSezione('Lingue', cvData.lingue, 'No lingue indicate.');
+
+    // Imposta il contenuto HTML
+    cvContent.innerHTML = htmlContent;
+}
+     
 
         const cvFile = localStorage.getItem('cvFile');
         if (cvFile) {

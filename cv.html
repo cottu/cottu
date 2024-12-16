@@ -10,29 +10,23 @@
             background-color: #F5F5F5;
             padding: 20px;
         }
-
         .cv-container {
             background-color: white;
             border: 1px solid #ddd;
             padding: 20px;
-            margin-top: 20px;
             max-width: 900px;
             margin: auto;
         }
-
-        .cv-header h1 {
+        h1 {
             margin-top: 0;
         }
-
         h2 {
             color: #0288D1;
         }
-
         ul {
             list-style-type: none;
             padding-left: 0;
         }
-
         li {
             padding: 5px 0;
         }
@@ -40,8 +34,7 @@
 </head>
 <body>
     <div class="cv-container">
-        <div id="cv-content">
-        </div>
+        <div id="contenutocv"></div>
     </div>
 
     <script>
@@ -50,64 +43,55 @@
             xhr.open('GET', cvFile, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    try {
-                        var cvData = JSON.parse(xhr.responseText);
-                        mostraCV(cvData);
-                    } catch (error) {
-                        console.error("Errore nel parsing del CV JSON:", error);
-                        alert("Errore nel formato del file JSON.");
-                    }
+                    var cvData = JSON.parse(xhr.responseText);
+                    mostraCV(cvData);
                 } else {
-                    console.error("Errore nel caricamento del CV. Status:", xhr.status);
-                    alert("Non è stato possibile caricare il CV.");
+                    alert("Errore nel caricamento del CV.");
                 }
             };
             xhr.onerror = function() {
-                console.error("Errore di rete durante il caricamento del CV.");
-                alert("Errore di rete durante il caricamento del CV.");
+                alert("Errore di rete.");
             };
             xhr.send();
         }
-    function mostraCV(cvData) {
-            const cvContent = document.getElementById('cv-content');
-            var htmlContent = '';
-htmlContent += '<header><h1>' + cvData.nome + '</h1><p>Email: ' + cvData.email + '</p><p>Età: ' + cvData.eta + '</p></header>';
 
-htmlContent += '<section><h2>Esperienza Lavorativa</h2><ul>';
-for (var i = 0; i < cvData.esperienza.length; i++) {
-    var exp = cvData.esperienza[i];
-    htmlContent += '<li>' + exp.ruolo + ' presso ' + exp.azienda + ' (' + exp.anno_inizio + ' - ' + exp.anno_fine + ')<p>' + exp.descrizione + '</p></li>';
-}
-if (cvData.esperienza.length == 0) htmlContent += '<li>No esperienze lavorative.</li>';
-htmlContent += '</ul></section>';
+        function mostraCV(cvData) {
+            var contenutoCV = document.getElementById('contenutocv');
+            var pop = '<h1>' + cvData.nome + '</h1>';
+            pop += '<p>Email: ' + cvData.email + '</p><p>Età: ' + cvData.eta + '</p>';
 
-htmlContent += '<section><h2>Istruzione</h2><ul>';
-for (var i = 0; i < cvData.istruzione.length; i++) {
-    var istruzione = cvData.istruzione[i];
-    htmlContent += '<li>' + istruzione.titolo + ' presso ' + istruzione.universita + ' (' + istruzione.anno + ')</li>';
-}
-if (cvData.istruzione.length == 0) htmlContent += '<li>No istruzione disponibile.</li>';
-htmlContent += '</ul></section>';
+            pop += '<h2>Esperienza Lavorativa</h2><ul>';
+            cvData.esperienza.forEach(function(exp) {
+                pop += '<li>' + exp.ruolo + ' presso ' + exp.azienda + ' (' + exp.anno_inizio + ' - ' + exp.anno_fine + ')<p>' + exp.descrizione + '</p></li>';
+            });
+            if (cvData.esperienza.length === 0) pop += '<li>No esperienze lavorative.</li>';
+            pop += '</ul>';
 
-htmlContent += '<section><h2>Competenze</h2><ul>';
-for (var i = 0; i < cvData.competenze.length; i++) {
-    htmlContent += '<li>' + cvData.competenze[i] + '</li>';
-}
-if (cvData.competenze.length == 0) htmlContent += '<li>No competenze indicate.</li>';
-htmlContent += '</ul></section>';
+            pop += '<h2>Istruzione</h2><ul>';
+            cvData.istruzione.forEach(function(istr) {
+                pop += '<li>' + istr.titolo + ' presso ' + istr.universita + ' (' + istr.anno + ')</li>';
+            });
+            if (cvData.istruzione.length === 0) pop += '<li>No istruzione disponibile.</li>';
+            pop += '</ul>';
 
-htmlContent += '<section><h2>Lingue</h2><ul>';
-for (var i = 0; i < cvData.lingue.length; i++) {
-    htmlContent += '<li>' + cvData.lingue[i].lingua + ' - ' + cvData.lingue[i].livello + '</li>';
-}
-if (cvData.lingue.length == 0) htmlContent += '<li>No lingue indicate.</li>';
-htmlContent += '</ul></section>';
+            pop += '<h2>Competenze</h2><ul>';
+            cvData.competenze.forEach(function(comp) {
+                pop += '<li>' + comp + '</li>';
+            });
+            if (cvData.competenze.length === 0) pop += '<li>No competenze indicate.</li>';
+            pop += '</ul>';
 
-cvContent.innerHTML = htmlContent;
+            pop += '<h2>Lingue</h2><ul>';
+            cvData.lingue.forEach(function(lingua) {
+                pop += '<li>' + lingua.lingua + ' - ' + lingua.livello + '</li>';
+            });
+            if (cvData.lingue.length === 0) pop += '<li>No lingue indicate.</li>';
+            pop += '</ul>';
+
+            contenutoCV.innerHTML = pop;
         }
-     
 
-        const cvFile = localStorage.getItem('cvFile');
+        var cvFile = localStorage.getItem('cvFile');
         if (cvFile) {
             caricaCV(cvFile);
         } else {

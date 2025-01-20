@@ -3,7 +3,7 @@
 $client = new SoapClient('http://localhost/soapserver.php?wsdl'); 
 
 
-$amount = 100; /
+$amount = 100; 
 $currency = 'USD'; 
 
 // Converto

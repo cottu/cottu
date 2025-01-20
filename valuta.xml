@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="CurrencyConverter"
+             targetNamespace="http://localhost/soap_server.php"
+             xmlns:tns="http://localhost/soap_server.php"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  
+    <message name="convertCurrencyRequest">
+        <part name="amount" type="xsd:float"/>
+        <part name="currency" type="xsd:string"/>
+    </message>
+    
+    <message name="convertCurrencyResponse">
+        <part name="convertedAmount" type="xsd:float"/>
+    </message>
+    
+    <portType name="CurrencyConverterPortType">
+        <operation name="convertCurrency">
+            <input message="tns:convertCurrencyRequest"/>
+            <output message="tns:convertCurrencyResponse"/>
+        </operation>
+    </portType>
+    
+    <binding name="CurrencyConverterBinding" type="tns:CurrencyConverterPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="convertCurrency">
+            <soap:operation soapAction="convertCurrency"/>
+            <input>
+                <soap:body use="literal"/>
+            </input>
+            <output>
+                <soap:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    
+    <service name="CurrencyConverterService">
+        <port name="CurrencyConverterPort" binding="tns:CurrencyConverterBinding">
+            <soap:address location="http://localhost/soap_server.php"/>
+        </port>
+    </service>
+</definitions>

@@ -1,6 +1,6 @@
 <?php
 // Creiamo un client SOAP
-$client = new SoapClient('http://localhost/soap_server.php?wsdl'); // Assicurati di sostituire con il percorso corretto del tuo WSDL
+$client = new SoapClient('http://localhost/soapserver.php?wsdl'); 
 
 // Recuperiamo i dati dall'utente (importo e valuta da convertire)
 $amount = 100; // Sostituisci con l'importo da convertire

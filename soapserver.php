@@ -2,7 +2,7 @@
 $wsdl = 'http://localhost/wsdl/valuta.wsdl'; 
 
 function getExchangeRates($currency) {
-    // Recuperiamo il file XML dalla BCE
+    // Recupero il file XML dalla BCE
     $xml = simplexml_load_file("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
 
     if (!$xml) {

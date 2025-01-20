@@ -1,6 +1,6 @@
 <?php
 // Importiamo il file WSDL (Web Service Definition Language)
-$wsdl = 'http://localhost/wsdl/valutaService.wsdl'; // Aggiungi il percorso corretto del file WSDL
+$wsdl = 'http://localhost/wsdl/valuta.wsdl'; // Aggiungi il percorso corretto del file WSDL
 
 // Funzione per recuperare i tassi di cambio da BCE
 function getExchangeRates($currency) {

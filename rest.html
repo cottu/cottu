@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Post - Make WordPress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Elenco Post - Make WordPress</h1>
+    <ul id="postList"></ul>
+
+    <script>
+        // La URL dell'API REST di Make WordPress
+        const apiUrl = 'https://make.wordpress.org/core/wp-json/wp/v2/posts';
+
+        // Funzione per caricare i post
+        function loadPosts() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const postList = document.getElementById('postList');
+                    postList.innerHTML = ''; // Pulisce la lista prima di aggiungere nuovi elementi
+                    data.forEach(post => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <h3><a href="${post.link}" target="_blank">${post.title.rendered}</a></h3>
+                            <p>${post.excerpt.rendered}</p>
+                        `;
+                        postList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Errore nel caricamento dei post:', error);
+                });
+        }
+
+        // Carica i post quando la pagina è pronta
+        loadPosts();
+    </script>
+</body>
+</html>

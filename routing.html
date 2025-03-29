@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing Semplice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+            background-color: white;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="home" class="nav-link">Home</a></li>
+                <li><a href="#" data-page="chi-siamo" class="nav-link">Chi Siamo</a></li>
+                <li><a href="#" data-page="cosa-facciamo" class="nav-link">Cosa Facciamo</a></li>
+                <li><a href="#" data-page="contatti" class="nav-link">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main id="content">
+        <!-- Il contenuto verrà caricato qui dinamicamente -->
+    </main>
+
+    <footer>
+        <p>&copy; 2025 La nostra azienda</p>
+    </footer>
+
+    <script>
+        // Contenuti delle "pagine" in formato HTML
+        const pages = {
+            home: `
+                <h1>Benvenuti sulla nostra Home</h1>
+                <p>Questa è la pagina principale del nostro sito.</p>
+            `,
+            'chi-siamo': `
+                <h1>Chi Siamo</h1>
+                <p>Scopri di più su chi siamo e cosa facciamo.</p>
+            `,
+            'cosa-facciamo': `
+                <h1>Cosa Facciamo</h1>
+                <p>Descrizione dei servizi che offriamo.</p>
+            `,
+            contatti: `
+                <h1>Contatti</h1>
+                <p>La pagina dei contatti sarà presto disponibile.</p>
+            `,
+        };
+
+        // Funzione per caricare la pagina selezionata
+        function loadPage(page) {
+            const content = document.getElementById("content");
+            content.innerHTML = pages[page] || "<p>Pagina non trovata.</p>";
+        }
+
+        // Gestione del click sui link del menu
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const page = e.target.getAttribute('data-page');
+                loadPage(page);
+            });
+        });
+
+        // Carica la home come default quando la pagina si carica
+        window.onload = function() {
+            loadPage('home');
+        };
+    </script>
+</body>
+</html>

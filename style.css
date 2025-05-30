@@ -90,8 +90,12 @@ body {
   background-image: url('https://images.unsplash.com/photo-1568667256549-094345857637?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
   background-size: cover;
 }
+#slide10 {
+  background-image: url('https://images.unsplash.com/photo-1568667256549-094345857637?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');
+  background-size: cover;
+}
 
-#slide3, #slide4, #slide5, #slide6, #slide7, #slide8, #slide9 {
+#slide3, #slide4, #slide5, #slide6, #slide7, #slide8, #slide9, #slide10{
   background: linear-gradient(135deg, #e0f7fa, #80deea);
 }
 
